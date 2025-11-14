@@ -1,449 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Dreamland Reality Events</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dreamland Reality Events</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg: #fddfe8;
-      --card-bg: #fbd6e1;
-      --icon: #c79a54;
-      --text: #9a5d52;
-      --text-soft: #b67c72;
-      --white: #ffffff;
-    }
+    <!-- Basic Styling -->
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff;
+            color: #333;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(rgba(255, 208, 230, 0.8), rgba(255, 225, 238, 0.9)),
+                        url('https://i.imgur.com/0C6h0kJ.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: #4a2b39;
+        }
 
-    body {
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-    }
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 52px;
+            margin-bottom: 10px;
+        }
 
-    .page {
-      width: 100%;
-      max-width: 1100px;
-      padding: 32px 20px 48px;
-    }
+        header p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
 
-    header {
-      text-align: center;
-      margin-bottom: 32px;
-    }
+        header a {
+            background-color: #D79AC5;
+            padding: 12px 25px;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+        }
 
-    .logo-text {
-      font-weight: 600;
-      font-size: 1.9rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
+        section {
+            padding: 70px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
 
-    .logo-highlight {
-      font-weight: 600;
-    }
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #D79AC5;
+        }
 
-    .tagline {
-      margin-top: 6px;
-      font-size: 0.95rem;
-      color: var(--text-soft);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
+        .services, .packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
 
-    main {
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 32px;
-      padding: 26px 18px 30px;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.04);
-      backdrop-filter: blur(6px);
-    }
+        .card {
+            background: #FFE8F3;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
 
-    .icon-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 22px 18px;
-    }
+        .card h3 {
+            color: #C065A3;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
 
-    .nav-card {
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      text-align: center;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-    }
+        .gallery {
+            text-align: center;
+        }
 
-    .nav-card:focus-visible {
-      outline: 2px solid var(--icon);
-      outline-offset: 4px;
-    }
+        .gallery a {
+            display: inline-block;
+            background-color: #D79AC5;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 20px;
+            font-weight: 600;
+        }
 
-    .nav-card:hover {
-      transform: translateY(-4px);
-    }
+        /* CONTACT FORM */
+        form {
+            max-width: 600px;
+            margin: auto;
+            background: #FFE8F3;
+            padding: 30px;
+            border-radius: 15px;
+        }
 
-    .icon-circle {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      background: var(--card-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 20px rgba(199, 154, 84, 0.15);
-    }
+        form input, form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
 
-    .icon-placeholder {
-      font-size: 2rem;
-      color: var(--icon);
-    }
+        form button {
+            width: 100%;
+            padding: 14px;
+            background-color: #D79AC5;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+        }
 
-    .nav-label {
-      font-size: 0.9rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #F7DDEB;
+            margin-top: 40px;
+        }
+    </style>
 
-    section {
-      margin-top: 40px;
-      padding-top: 40px;
-      border-top: 1px solid rgba(255, 255, 255, 0.7);
-    }
-
-    section h2 {
-      font-size: 1.15rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    section p {
-      font-size: 0.95rem;
-      color: var(--text-soft);
-      line-height: 1.6;
-      max-width: 720px;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: underline;
-    }
-
-    @media (max-width: 600px) {
-      .page {
-        padding: 20px 14px 32px;
-      }
-
-      main {
-        padding: 20px 14px 24px;
-      }
-    }
-  </style>
 </head>
 <body>
-  <div class="page">
-    <!-- HEADER -->
+
+    <!-- HERO SECTION -->
     <header>
-      <div class="logo-text">
-        Dreamland <span class="logo-highlight">Reality</span> Events
-      </div>
-      <div class="tagline">
-        When your event dreams meet reality
-      </div>
+        <h1>Dreamland Reality Events</h1>
+        <p>Where Your Event Dreams Become Reality ✨</p>
+        <a href="#contact">Book Your Event</a>
     </header>
 
-    <!-- MAIN MENU CARD -->
-    <main>
-      <div class="icon-grid">
-        <a href="#about" class="nav-card">
-          <div class="icon-circle">
-            <span class="icon-placeholder">☁️</span>
-          </div>
-          <span class="nav-label">About Us</span>
-        </a>
-
-        <a href="#services" class="nav-card">
-          <div class="icon-circle">
-            <span class="icon-placeholder">✨</span>
-          </div>
-          <span class="nav-label">Services</span>
-        </a>
-
-        <a href="#packages" class="nav-card">
-          <div class="icon-circle">
-            <span class="icon-placeholder">🎁</span>
-          </div>
-          <span class="nav-label">Packages</span>
-        </a>
-
-        <a href="#pricing" class="nav-card">
-          <div class="icon-circle">
-            <span class="icon-placeholder">💲</span>
-          </div>
-          <span class="nav-label">Pricing</span>
-        </a>
-
-        <a href="#bookings" class="nav-card">
-          <div class="icon-circle">
-            <span class="icon-placeholder">📅</span>
-          </div>
-          <span class="nav-label">Bookings</span>
-        </a>
-
-        <a href="#gallery" class="nav-card">
-          <div class="icon-circle">
-            <span class="icon-placeholder">🖼️</span>
-          </div>
-          <span class="nav-label">Gallery</span>
-        </a>
-
-        <a href="#picnics" class="nav-card">
-          <div class="icon-circle">
-            <span class="icon-placeholder">🧺</span>
-          </div>
-          <span class="nav-label">Picnics</span>
-        </a>
-
-        <a href="#birthdays" class="nav-card">
-          <div class="icon-circle">
-            <span class="icon-placeholder">🎉</span>
-          </div>
-          <span class="nav-label">Birthdays</span>
-        </a>
-
-        <a href="#gender-reveals" class="nav-card">
-          <div class="icon-circle">
-            <span class="icon-placeholder">🎈</span>
-          </div>
-          <span class="nav-label">Gender Reveals</span>
-        </a>
-
-        <a href="#baby-showers" class="nav-card">
-          <div class="icon-circle">
-            <span class="icon-placeholder">🍼</span>
-          </div>
-          <span class="nav-label">Baby Showers</span>
-        </a>
-
-        <a href="#bridal" class="nav-card">
-          <div class="icon-circle">
-            <span class="icon-placeholder">💍</span>
-          </div>
-          <span class="nav-label">Bridal</span>
-        </a>
-
-        <a href="#romantic" class="nav-card">
-          <div class="icon-circle">
-            <span class="icon-placeholder">🕯️</span>
-          </div>
-          <span class="nav-label">Romantic</span>
-        </a>
-
-        <a href="#client-love" class="nav-card">
-          <div class="icon-circle">
-            <span class="icon-placeholder">💬</span>
-          </div>
-          <span class="nav-label">Client Love</span>
-        </a>
-
-        <a href="#behind-the-scenes" class="nav-card">
-          <div class="icon-circle">
-            <span class="icon-placeholder">🎬</span>
-          </div>
-          <span class="nav-label">Behind the Scenes</span>
-        </a>
-
-        <a href="#contact" class="nav-card">
-          <div class="icon-circle">
-            <span class="icon-placeholder">✉️</span>
-          </div>
-          <span class="nav-label">Contact</span>
-        </a>
-      </div>
-    </main>
-
-    <!-- CONTENT SECTIONS -->
-
+    <!-- ABOUT -->
     <section id="about">
-      <h2>About Us</h2>
-      <p>
-        Dreamland Reality Events is all about taking the ideas in your heart and turning them into celebrations that feel like a dream come true.
-        We listen to your vision, add our creativity and attention to detail, and bring it to life in a way that feels personal, beautiful, and unforgettable.
-      </p>
+        <h2>About Us</h2>
+        <p style="text-align:center; max-width:800px; margin:auto;">
+            At Dreamland Reality Events, we turn imagination into unforgettable experiences.
+            Whether it’s a birthday, baby shower, romantic setup, or picnic —
+            our passion is creating soft, dreamy, luxury-inspired events that bring your vision to life.
+        </p>
     </section>
 
+    <!-- SERVICES -->
     <section id="services">
-      <h2>Services</h2>
-      <p>
-        We offer full event planning, décor styling, and custom concept design for every kind of celebration, from intimate picnics to big milestone events.
-        From sourcing suppliers and creating moodboards to setting up on the day and coordinating all the details, we handle the behind-the-scenes so you can relax and enjoy your moment.
-      </p>
+        <h2>Our Services</h2>
+
+        <div class="services">
+            <div class="card">
+                <h3>Full Event Planning</h3>
+                <p>We bring every detail of your dream event together.</p>
+            </div>
+
+            <div class="card">
+                <h3>Décor & Styling</h3>
+                <p>Soft, elegant, creative décor for any occasion.</p>
+            </div>
+
+            <div class="card">
+                <h3>Custom Concept Design</h3>
+                <p>We create personalized themes based on your vision.</p>
+            </div>
+
+            <div class="card">
+                <h3>Picnic Setups</h3>
+                <p>Picnics anywhere — parks, beaches, gardens.</p>
+            </div>
+
+            <div class="card">
+                <h3>Baby Showers</h3>
+                <p>Soft, beautiful pastel themes & magical touches.</p>
+            </div>
+
+            <div class="card">
+                <h3>Gender Reveals</h3>
+                <p>Creative reveal ideas tailored to your style.</p>
+            </div>
+
+            <div class="card">
+                <h3>Birthdays</h3>
+                <p>We cater to all ages — from 1st to 60th and beyond.</p>
+            </div>
+
+            <div class="card">
+                <h3>Romantic Setups</h3>
+                <p>Luxury romantic moments your partner will never forget.</p>
+            </div>
+        </div>
     </section>
 
+    <!-- PACKAGES -->
     <section id="packages">
-      <h2>Packages</h2>
-      <p>
-        Choose from thoughtfully curated packages such as <strong>Dream Start</strong> (styling and décor only), <strong>Dreamland Signature</strong> (full planning and coordination),
-        <strong>Intimate Moments</strong> (picnics and romantic setups), and <strong>Little Dreamers</strong> (kids’ birthdays, baby showers, and gender reveals).
-        Each package can be tailored to your budget, theme, and venue so that your event feels uniquely “you” from start to finish.
-      </p>
+        <h2>Packages</h2>
+
+        <div class="packages">
+            <div class="card">
+                <h3>Basic Package</h3>
+                <p>R800 – R1200<br>Simple setup for small events.</p>
+            </div>
+
+            <div class="card">
+                <h3>Standard Package</h3>
+                <p>R1500 – R3500<br>Décor + theme styling + setup.</p>
+            </div>
+
+            <div class="card">
+                <h3>Deluxe Package</h3>
+                <p>R4000 – R8000<br>Luxury décor + bigger setup.</p>
+            </div>
+
+            <div class="card">
+                <h3>Custom Package</h3>
+                <p>Tell us your vision — we create it.</p>
+            </div>
+        </div>
     </section>
 
-    <section id="pricing">
-      <h2>Pricing</h2>
-      <p>
-        Based in Cape Town, South Africa, our pricing is designed to be transparent and flexible, with intimate picnics and romantic setups typically starting from around <strong>R1 200</strong>,
-        and larger celebrations like birthdays, bridal showers, and baby showers usually starting from around <strong>R3 500</strong> depending on the guest count, location, and décor.
-        Every event is different, so we create custom quotes once we know your vision, budget, and needs, ensuring you get the best possible value for your special day.
-      </p>
+    <!-- GALLERY -->
+    <section id="gallery" class="gallery">
+        <h2>Gallery</h2>
+        <p>See our latest events, décor, and setups.</p>
+        <a href="https://www.instagram.com/dreamland_reality_events" target="_blank">View Instagram Gallery</a>
     </section>
 
-    <section id="bookings">
-      <h2>Bookings</h2>
-      <p>
-        To book, simply complete the inquiry form on the website or send us an email with your date, type of event, location, and a short description of your dream setup.
-        We’ll respond with availability, a few ideas, and a custom quote, and once you’re happy, we secure your date and start turning your vision into reality.
-      </p>
-    </section>
-
-    <section id="gallery">
-      <h2>Gallery</h2>
-      <p>
-        Explore our work, themes, and setups by visiting our Instagram page:
-        <a href="https://www.instagram.com/dreamland_reality_events?igsh=dHExOXlwdTc3OHVp&utm_source=qr" target="_blank">
-          @dreamland_reality_events
-        </a>.
-        This is where you’ll see our latest events, behind-the-scenes moments, and all the dreamland details up close.
-      </p>
-    </section>
-
-    <section id="picnics">
-      <h2>Picnics</h2>
-      <p>
-        Our picnic setups are designed to feel dreamy, cosy, and Instagram-ready, with styled blankets, cushions, low tables, décor, and tableware that match your chosen theme and colours.
-        We set up in parks or locations of your choice in and around Cape Town, giving you a picture-perfect space to relax, celebrate, and make memories with the people you love.
-      </p>
-    </section>
-
-    <section id="birthdays">
-      <h2>Birthdays</h2>
-      <p>
-        From first birthdays to 30ths, 40ths, and every milestone in between, we cater to all birthdays and all ages with creative themes, décor, and layouts that reflect your personality.
-        Whether you want something soft and elegant, fun and colourful, or bold and dramatic, we design a celebration that feels like it was made just for you.
-      </p>
-    </section>
-
-    <section id="gender-reveals">
-      <h2>Gender Reveals</h2>
-      <p>
-        We are open to every kind of gender reveal – from balloons, boxes, smoke bombs, confetti, and cake reveals to personalised, unique ideas that fit your story.
-        Our job is to keep the secret safe, set up the moment beautifully, and create a reveal that you and your loved ones will remember forever.
-      </p>
-    </section>
-
-    <section id="baby-showers">
-      <h2>Baby Showers</h2>
-      <p>
-        Our baby showers are soft, celebratory spaces created to honour mom-to-be and the little life on the way, with thoughtful décor, themed details, and picture-perfect setups.
-        From elegant high teas to playful, colourful gatherings with games and gifting moments, we style everything so your guests can simply arrive and enjoy.
-      </p>
-    </section>
-
-    <section id="bridal">
-      <h2>Bridal</h2>
-      <p>
-        Whether it’s a bridal shower, kitchen tea, or a classy pre-wedding celebration, we create feminine, romantic, and stylish setups that make the bride feel truly celebrated.
-        Think beautiful tablescapes, soft florals, curated décor, and special touches that reflect her personality and love story.
-      </p>
-    </section>
-
-    <section id="romantic">
-      <h2>Romantic</h2>
-      <p>
-        We love love, and romantic setups are where our creativity truly shines – from surprise proposals and anniversaries to intimate date nights styled with candles, florals, and dreamy décor.
-        Whether you want something grand or quietly intimate, we create a space that feels intentional, magical, and full of romance.
-      </p>
-    </section>
-
-    <section id="client-love">
-      <h2>Client Love</h2>
-      <p>
-        This is where we’ll share real reviews, messages, and feedback from our Dreamland Reality clients as our journey grows.
-        After your event, you’ll be invited to send us your experience or testimonial so we can feature your story here.
-      </p>
-    </section>
-
-    <section id="behind-the-scenes">
-      <h2>Behind the Scenes</h2>
-      <p>
-        Behind the scenes content is coming soon – from setup days and planning moments to the little details you don’t always see on the day.
-        For now, you can catch glimpses of our process on Instagram while we build this space for more inside looks at Dreamland Reality Events.
-      </p>
-    </section>
-
+    <!-- CONTACT -->
     <section id="contact">
-      <h2>Contact</h2>
-      <p>
-        For inquiries and bookings, email us at:
-        <form action="https://formsubmit.co/dreamlandrealityevents@gmail.com" method="POST">
-    <!-- FormSubmit settings -->
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_subject" value="New Inquiry from Dreamland Reality Events">
-    <input type="hidden" name="_template" value="table">
+        <h2>Bookings & Inquiries</h2>
 
-    <div class="form-group">
-        <label for="name">Name*</label>
-        <input id="name" type="text" name="name" required>
-    </div>
+        <!-- WORKING CONTACT FORM (Web3Forms) -->
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="13a8294b-ee65-4ad6-858d-a899424ef554">
 
-    <div class="form-group">
-        <label for="email">Email*</label>
-        <input id="email" type="email" name="email" required>
-    </div>
+            <input type="text" name="name" placeholder="Your Name*" required>
+            <input type="email" name="email" placeholder="Your Email*" required>
+            <input type="text" name="phone" placeholder="Phone / WhatsApp">
+            <input type="text" name="eventType" placeholder="Event Type (Birthday, Baby Shower, Picnic)">
+            <input type="date" name="eventDate">
+            <textarea name="message" rows="5" placeholder="Tell us about your dream event*" required></textarea>
 
-    <div class="form-group">
-        <label for="phone">Phone / WhatsApp</label>
-        <input id="phone" type="text" name="phone">
-    </div>
-
-    <div class="form-group">
-        <label for="eventType">Event Type</label>
-        <input id="eventType" type="text" name="eventType" placeholder="Birthday, Picnic, Baby Shower, etc.">
-    </div>
-
-    <div class="form-group">
-        <label for="eventDate">Event Date (if known)</label>
-        <input id="eventDate" type="date" name="eventDate">
-    </div>
-
-    <div class="form-group">
-        <label for="message">Tell us about your dream event*</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-    </div>
-
-    <button type="submit">Send Inquiry</button>
-</form>
-
-        <strong>dreamlandrealityevents@gmail.com</strong>
-      </p>
+            <button type="submit">Send Inquiry</button>
+        </form>
     </section>
-  </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Dreamland Reality Events © 2025</p>
+        <p>Email: dreamlandrealityevents@gmail.com</p>
+    </footer>
+
 </body>
 </html>
-
-
